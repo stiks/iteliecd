@@ -1,6 +1,8 @@
 #ifndef __SOAP_H__
 #define __SOAP_H__
 
+#include "../iteliec-client.h"
+
 void parseResponse (xmlDocPtr xml_doc, xmlNodePtr xml_node_parent);
 void err_soap(herror_t err);
 int iteliec_soap_init (const char *hash);

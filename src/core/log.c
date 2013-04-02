@@ -1,7 +1,3 @@
-#include <syslog.h>
-#include <stdarg.h>
-#include <stdio.h>
-
 #include "log.h"
 
 static int verbose = 0;

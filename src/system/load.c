@@ -1,19 +1,8 @@
-#include <statgrab.h>
-#include <libcsoap/soap-client.h>
-
-#include "log.h"
-#include "load.h"
+#include "../iteliec-client.h"
 
 int *iteliec_get_load_info (SoapCtx *request) {
 	sg_load_stats *load_stat;
 
-/*
-    sg_init ();
-
-    if (sg_drop_privileges () != 0) {
-        iteliec_log (ITELIEC_ERR, "%s: Error. Failed to drop privileges", __func__);
-    }
-*/
 	load_stat = sg_get_load_stats ();
 
     soap_env_push_item (request->env, "urn:LoadSoap", "load");

@@ -1,5 +1,9 @@
-#ifndef __UTIL_H__
-#define __UTIL_H__
+#ifndef __LOG_H__
+#define __LOG_H__
+
+#include <syslog.h>
+#include <stdarg.h>
+#include <stdio.h>
 
 typedef enum {
    	ITELIEC_ERR,
@@ -12,4 +16,4 @@ void iteliec_log_close (void);
 void iteliec_log (int priority, const char *fmt, ...)
   __attribute__((format (printf, 2, 3)));
 
-#endif /* __UTIL_H__ */
+#endif /* __LOG_H__ */

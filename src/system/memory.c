@@ -1,18 +1,7 @@
-#include <statgrab.h>
-#include <libcsoap/soap-client.h>
-
-#include "log.h"
-#include "memory.h"
+#include "../iteliec-client.h"
 
 int *iteliec_get_memory_info (SoapCtx *request) {
     sg_mem_stats *mem_stats;
-/*
-    sg_init ();
-
-    if (sg_drop_privileges () != 0) {
-        iteliec_log (ITELIEC_ERR, "%s: Error. Failed to drop privileges", __func__);
-    }
-*/
     mem_stats = sg_get_mem_stats ();
 
     soap_env_push_item (request->env, "urn:MemorySoap", "memory");

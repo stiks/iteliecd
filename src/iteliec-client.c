@@ -1,35 +1,4 @@
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
-#include <unistd.h>
-#include <fcntl.h>
-#include <paths.h>
-#include <limits.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <string.h>
-#include <stdint.h>
-#include <stddef.h>
-#include <errno.h>
-#include <getopt.h>
-#include <signal.h>
-#include <pwd.h>
-#include <grp.h>
-#include <arpa/inet.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-
-#include <libcsoap/soap-client.h>
-#include <statgrab.h>
-
-#include <libconfig.h>
-
-#include "core/log.h"
-#include "core/conf.h"
-#include "core/soap.h"
+#include "iteliec-client.h"
 
 #include "system/host.h"
 #include "system/load.h"
@@ -40,8 +9,6 @@
 #include "system/network.h"
 #include "system/process.h"
 #include "system/disk.h"
-
-#include "iteliec-client.h"
 
 static int down = 0;
 static int update_period = 60;

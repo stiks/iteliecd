@@ -1,7 +1,7 @@
 #ifndef __CONF_H__
 #define __CONF_H__
 
-#include <libconfig.h>
+#include "../iteliec-client.h"
 
 int iteliec_config_check (char *config);
 

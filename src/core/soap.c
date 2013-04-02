@@ -1,16 +1,3 @@
-#include <stdio.h>
-#include <stdarg.h>
-
-#include <string.h>
-#include <libxml/parser.h>
-#include <libxml/xpath.h>
-
-#include <libcsoap/soap-client.h>
-#include <libcsoap/soap-router.h>
-
-#include "conf.h"
-#include "soap.h"
-
 #include "../iteliec-client.h"
 
 void parseResponse (xmlDocPtr xml_doc, xmlNodePtr xml_node_parent) {

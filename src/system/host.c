@@ -1,19 +1,8 @@
-#include <statgrab.h>
-#include <libcsoap/soap-client.h>
-
-#include "log.h"
-#include "host.h"
+#include "../iteliec-client.h"
 
 int *iteliec_get_host_info (SoapCtx *request) {
 	sg_host_info *general_stats;
 
-/*
-    sg_init ();
-
-    if (sg_drop_privileges () != 0) {
-        iteliec_log (ITELIEC_ERR, "%s: Error. Failed to drop privileges", __func__);
-    }
-*/
 	general_stats = sg_get_host_info ();
 
     soap_env_push_item (request->env, "urn:HostSoap", "host");

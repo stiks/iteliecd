@@ -1,8 +1,4 @@
-#include <statgrab.h>
-#include <libcsoap/soap-client.h>
-
-#include "log.h"
-#include "disk.h"
+#include "../iteliec-client.h"
 
 int *iteliec_get_disk_info (SoapCtx *request) {
 	sg_disk_io_stats *diskio_stats;

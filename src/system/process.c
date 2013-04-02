@@ -1,19 +1,8 @@
-#include <statgrab.h>
-#include <libcsoap/soap-client.h>
-
-#include "log.h"
-#include "process.h"
+#include "../iteliec-client.h"
 
 int *iteliec_get_process_info (SoapCtx *request) {
 	sg_process_count *process_stat;
 
-/*
-    sg_init ();
-
-    if (sg_drop_privileges () != 0) {
-        iteliec_log (ITELIEC_ERR, "%s: Error. Failed to drop privileges", __func__);
-    }
-*/
     process_stat = sg_get_process_count ();
 
     soap_env_push_item (request->env, "urn:ProcessSoap", "process");

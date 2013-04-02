@@ -1,15 +1,3 @@
-#include <stdio.h>
-#include <stdarg.h>
-
-#include <string.h>
-#include <libxml/parser.h>
-#include <libxml/xpath.h>
-#include <libconfig.h>
-
-#include <libcsoap/soap-client.h>
-
-#include "conf.h"
-#include "log.h"
 #include "../iteliec-client.h"
 
 int iteliec_config_check (char *config) {

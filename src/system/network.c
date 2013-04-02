@@ -1,20 +1,8 @@
-#include <statgrab.h>
-#include <libcsoap/soap-client.h>
-
-#include "log.h"
-#include "network.h"
+#include "../iteliec-client.h"
 
 int *iteliec_get_network_info (SoapCtx *request) {
 	sg_network_io_stats *network_stats;
 	int x, num_network_stats;
-
-/*
-    sg_init ();
-
-    if (sg_drop_privileges () != 0) {
-        iteliec_log (ITELIEC_ERR, "%s: Error. Failed to drop privileges", __func__);
-    }
-*/
 
 	/* We are not interested in the amount of traffic ever transmitted. */
 	network_stats = sg_get_network_io_stats_diff (&num_network_stats);
@@ -51,14 +39,6 @@ int *iteliec_get_network_info (SoapCtx *request) {
 int *iteliec_get_iface_info (SoapCtx *request) {
 	sg_network_iface_stats *network_iface_stats;
 	int x, iface_count;
-
-/*
-    sg_init ();
-
-    if (sg_drop_privileges () != 0) {
-        iteliec_log (ITELIEC_ERR, "%s: Error. Failed to drop privileges", __func__);
-    }
-*/
 
 	network_iface_stats = sg_get_network_iface_stats (&iface_count);
 
