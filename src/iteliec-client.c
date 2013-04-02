@@ -45,8 +45,8 @@
 
 static int down = 0;
 static int update_period = 60;
-static char *pid_file = "/var/run/iteliec-client.pid";
-static const char *cfile = "/usr/local/etc/iteliec.conf";
+static char *pid_file = "/var/run/iteliecd.pid";
+static const char *cfile = "/usr/local/etc/iteliecd.conf";
 
 static void sig_handler (int sig, siginfo_t *siginfo ATTRIBUTE_UNUSED, void *context ATTRIBUTE_UNUSED) {
     switch (sig) {
@@ -381,7 +381,7 @@ int main(int argc, char *argv[]) {
                 return ITELIEC_EXIT;
 
             default:
-                fprintf (stderr, "iteliec-client: unknown option: %c\n", c);
+                fprintf (stderr, "iteliecd: unknown option: %c\n", c);
                 exit (ITELIEC_ERR);
         }
     }

@@ -43,7 +43,7 @@ SRCS = src/iteliec-client.c \
 OBJS = $(SRCS:.c=.o)
 
 # define the executable file 
-MAIN = iteliec-client
+MAIN = iteliecd
 
 # define delete fuction
 RM = rm
@@ -64,7 +64,7 @@ $(MAIN): $(OBJS)
 
 install: all
 	install -m 755 $(MAIN) $(DESTDIR)$(PREFIX)/bin
-	test -e $(DESTDIR)$(PREFIX)/src/examples/iteliec.conf || install -m 644 src/examples/iteliec.conf $(DESTDIR)$(PREFIX)/etc
+	test -e $(DESTDIR)$(PREFIX)/src/examples/iteliecd.conf || install -m 644 src/examples/iteliecd.conf $(DESTDIR)$(PREFIX)/etc
 #	test -e /etc/iteliec.conf || ln -s $(DESTDIR)$(PREFIX)/etc/iteliec.conf /etc/iteliec.conf
 
 # this is a suffix replacement rule for building .o's from .c's
