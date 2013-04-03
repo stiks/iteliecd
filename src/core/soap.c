@@ -97,6 +97,7 @@ int iteliec_soap_init (const char *hash) {
     iteliec_get_user_info (&request->env);
     iteliec_get_load_info (&request->env);
     iteliec_get_process_info (&request->env);
+    iteliec_get_process_list (&request->env);
     iteliec_get_memory_info (&request->env);
     iteliec_get_swap_info (&request->env);
     iteliec_get_cpu_info (&request->env);
