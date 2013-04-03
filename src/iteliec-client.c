@@ -239,7 +239,7 @@ static void iteliec_register (const char *argv0) {
     /* Read the file. If there is an error, report it and exit. */
     if (!config_read_file (&cfg, cfile)) {
         printf ("Please ensure configuration file %s exists and is valid", cfile);
-        printf ("\n%s:%d - %s", config_error_file (&cfg), config_error_line (&cfg), config_error_text (&cfg));
+        //printf ("\n%s:%d - %s", config_error_file (&cfg), config_error_line (&cfg), config_error_text (&cfg));
         
         config_destroy (&cfg);
         
@@ -365,7 +365,7 @@ int main(int argc, char *argv[]) {
     /* Read the file. If there is an error, report it and exit. */
     if (!config_read_file (&cfg, cfile)) {
         printf ("Please ensure configuration file %s exists and is valid", cfile);
-        printf ("\n%s:%d - %s", config_error_file (&cfg), config_error_line (&cfg), config_error_text (&cfg));
+        //printf ("\n%s:%d - %s", config_error_file (&cfg), config_error_line (&cfg), config_error_text (&cfg));
         
         config_destroy (&cfg);
         

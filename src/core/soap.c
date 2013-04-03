@@ -159,7 +159,7 @@ int iteliec_soap_register (char *username, char *password) {
     /* Read the file. If there is an error, report it and exit. */
     if (!config_read_file (&cfg, cfile)) {
         printf ("Please ensure configuration file %s exists and is valid", cfile);
-        printf ("\n%s:%d - %s", config_error_file (&cfg), config_error_line (&cfg), config_error_text (&cfg));
+        //printf ("\n%s:%d - %s", config_error_file (&cfg), config_error_line (&cfg), config_error_text (&cfg));
         
         config_destroy (&cfg);
         
