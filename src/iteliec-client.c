@@ -203,7 +203,11 @@ static int daemonize (void) {
 /* main run loop */
 static int iteliec_run (const char *hash) {
     /* StatsGraph init */
-    sg_init ();
+    if (sg_init () != 0) {
+        iteliec_log (ITELIEC_ERR, "%s: Error. Failed to initialize libgitstatsgraph", __func__);
+
+        return ITELIEC_ERR;
+    }
 
     if (sg_drop_privileges () != 0) {
         iteliec_log (ITELIEC_ERR, "%s: Error. Failed to drop privileges", __func__);
@@ -421,31 +425,6 @@ int main(int argc, char *argv[]) {
     config_destroy (&cfg);
 
     return ITELIEC_OK;
-}
-
-
-migrationPtr parseMigration (xmlDocPtr xml_doc, xmlNodePtr xml_node_parent, migrationPtr ret) {
-    xmlNodePtr xml_node;
-    xmlChar *buf;
-
-    xml_node = xml_node_parent->xmlChildrenNode;
-    while (xml_node != NULL) {
-        buf = (char*)xmlNodeListGetString(xml_doc, xml_node->xmlChildrenNode, 1);
-
-        if (!strcmp(xml_node->name, "version")) {
-            ret->version = buf;
-        } else if (!strcmp(xml_node->name, "apply_time")) {
-            ret->apply_time = buf;
-        }
-
-        xmlFree(buf); buf = NULL;
-
-        ret = parseMigration (xml_doc, xml_node, ret);
-
-        xml_node = xml_node->next;
-    }
-
-    return ret;
 }
 
 const char *iteliec_config_file () {
