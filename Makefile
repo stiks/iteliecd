@@ -4,19 +4,20 @@
 # 'make'        build executable file 'mycc'
 # 'make clean'  removes all .o and executable files
 #
+UNAME := $(shell uname)
 
 # define the C compiler to use
 CC = gcc
 
-# define any compile-time flags
-CFLAGS=`csoap-config --cflags`
-
 # define any directories containing header files
 INCLUDES = -Isrc -Isrc/core
 
-# define any libraries to link into executable:
-# removed: -levent
-LIBS = `csoap-config --libs` -lstatgrab -ldevstat -lconfig
+CFLAGS=`pkg-config --cflags libcsoap`
+LIBS = `pkg-config --libs libcsoap` -lstatgrab -ldevstat -lconfig
+
+# FreeBSD
+#CFLAGS=`csoap-config --cflags`
+#LIBS = `csoap-config --libs` -lstatgrab -ldevstat -lconfig
 
 # define the C source files
 SRCS = src/iteliec-client.c \
