@@ -52,13 +52,12 @@ void err_soap(herror_t err) {
     herror_release (err);
 }
 
-int iteliec_soap_init (const char *hash) {
+int iteliec_soap_init (char *hash) {
     herror_t err;
     SoapCtx *request;
     SoapCtx *response;
 
     char url[1024];
-    //char hash[128];
     int error;
 
     xmlNodePtr function, node;
@@ -158,7 +157,7 @@ int iteliec_soap_register (char *username, char *password) {
 
     /* Read the file. If there is an error, report it and exit. */
     if (!config_read_file (&cfg, cfile)) {
-        printf ("Please ensure configuration file %s exists and is valid", cfile);
+        iteliec_log (ITELIEC_ERR, "Please ensure configuration file %s exists and is valid", cfile);
         //printf ("\n%s:%d - %s", config_error_file (&cfg), config_error_line (&cfg), config_error_text (&cfg));
         
         config_destroy (&cfg);

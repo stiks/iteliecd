@@ -5,7 +5,7 @@
 
 void parseResponse (xmlDocPtr xml_doc, xmlNodePtr xml_node_parent);
 void err_soap(herror_t err);
-int iteliec_soap_init (const char *hash);
+int iteliec_soap_init (char *hash);
 
 typedef int bool;
 #define false 0

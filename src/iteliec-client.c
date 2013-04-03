@@ -201,7 +201,7 @@ static int daemonize (void) {
 }
 
 /* main run loop */
-static int iteliec_run (const char *hash) {
+static int iteliec_run (char *hash) {
     /* StatsGraph init */
     if (sg_init () != 0) {
         iteliec_log (ITELIEC_ERR, "%s: Error. Failed to initialize libgitstatsgraph", __func__);
@@ -293,6 +293,8 @@ int main(int argc, char *argv[]) {
     const char *user = NULL;
     const char *pfile = NULL;
     const char *hash;
+    char* api_hash;
+
     config_t cfg;
     config_setting_t *setting;
 
@@ -364,7 +366,7 @@ int main(int argc, char *argv[]) {
 
     /* Read the file. If there is an error, report it and exit. */
     if (!config_read_file (&cfg, cfile)) {
-        printf ("Please ensure configuration file %s exists and is valid", cfile);
+        iteliec_log (ITELIEC_ERR, "Please ensure configuration file %s exists and is valid", cfile);
         //printf ("\n%s:%d - %s", config_error_file (&cfg), config_error_line (&cfg), config_error_text (&cfg));
         
         config_destroy (&cfg);
@@ -375,6 +377,9 @@ int main(int argc, char *argv[]) {
     /* Get Server Hash from config */
     if (config_lookup_string (&cfg, "api.hash", &hash)) {
         iteliec_log (ITELIEC_INFO, "HASH loaded: %s", hash);
+
+        api_hash = (char*)malloc(strlen(hash) +1);
+        strcpy(api_hash, hash);
     } else {
         iteliec_log (ITELIEC_ERR, "No server hash found. Please run configuration.");
 
@@ -420,7 +425,7 @@ int main(int argc, char *argv[]) {
     sigaction (SIGTERM, &sig_action, NULL);
 
     /* Main Loop */
-    iteliec_run (hash);
+    iteliec_run (api_hash);
 
     config_destroy (&cfg);
 
